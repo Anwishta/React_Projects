@@ -56,3 +56,52 @@ function move(animal: Fish | Bird){
     }
     return animal.fly()
 }
+
+type cakeOrder = {
+    type: string
+    sugar: number
+}
+
+function isCakeOrder(obj : any): obj is cakeOrder{
+    return (
+        typeof obj === "object" 
+        && obj !== null 
+        && typeof obj.type === "string"
+        && typeof obj.sugar === "number"
+    )
+}
+
+function serveCakeOrder (item: cakeOrder | string){
+    if(isCakeOrder(item)){
+        return `Serving ${item.type} with ${item.sugar} sugar`
+    }
+    return `Serving custom cake ${item}`
+}
+
+type BlackForest = {
+    type: "black forest",
+    sugarLevel: number
+}
+
+type VanillaCake = {
+    type: "vanilla",
+    sugarLevel: number
+}
+
+type CupCake = {
+    type: "Small Cute Cakes",
+    sugarLevel: number,
+    size: "small" | "middle" | "large"
+}
+
+type Cake = BlackForest | VanillaCake | CupCake
+
+function finalCakeOrder(item : Cake){
+    if (item.type === "Small Cute Cakes") {
+        return `Cup Cakes`
+    }
+    if (item.type === "black forest") {
+        return `Black Forest`
+    }
+    
+}
