@@ -12,10 +12,10 @@ class StrawberryCake{
 
 function serve(cake : ChocolateCake | StrawberryCake){
     if (cake instanceof ChocolateCake) {
-        return `Make ${cake}`
+        return cake.serve()
     }
     if (cake instanceof StrawberryCake) {
-        return `Make ${cake}`
+        return cake.serve()
     }
 }
 
@@ -40,4 +40,19 @@ function sizeCake(size: "small" | "medium" | "large" | number){
         return  `Make extra cake`
     }
     return `Make #${size} cakes`
+}
+
+type Fish = {
+    swim: () => void
+}
+
+type Bird = {
+    fly: () => void
+}
+
+function move(animal: Fish | Bird){
+    if ("swim" in animal) {
+        return animal.swim()
+    }
+    return animal.fly()
 }
